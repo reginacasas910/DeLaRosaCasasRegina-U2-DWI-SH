@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="titulo-login">Iniciar Sesión</h2>
+
+<form method="POST" class="formulario-login">
+    {% csrf_token %}
+
+    <label>Nombre</label>
+    <input type="nombre" name="nombre" required>
+
+    <label>Contraseña:</label>
+    <input type="password" name="contraseña" required>
+
+    <button type="submit">Entrar</button>
+
+    <a href="{% url 'recuperar' %}" class="recuperar">
+        ¿Olvidaste tu contraseña?
+    </a>
+</form>
+
+{% endblock %}

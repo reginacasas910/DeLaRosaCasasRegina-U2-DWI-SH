@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="titulo-login">Recuperar Contraseña</h2>
+
+<form method="POST" class="formulario-login">
+    {% csrf_token %}
+
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+
+    <label>Correo:</label>
+    <input type="email" name="correo" required>
+
+    <label>Contraseña actual:</label>
+    <input type="password" name="contraseña_actual" required>
+
+    <label>Nueva contraseña:</label>
+    <input type="password" name="nueva_contraseña" required>
+
+    <button type="submit">Actualizar contraseña</button>
+
+    {% if mensaje %}
+        <p style="color:green; text-align:center; font-size:0.85rem;">
+            {{ mensaje }}
+        </p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red; text-align:center; font-size:0.85rem;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+</form>
+
+{% endblock %}

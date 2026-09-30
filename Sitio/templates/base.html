@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio Web</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <img src="{% static 'img/Logo.png' %}" alt="Logo" class="logo">
+</header>
+
+<nav>
+    <ul class="menu">
+        <li><a href="/">Inicio</a></li>
+
+        <li><a href="/maquillaje/">Maquillaje</a></li>
+
+        <li class="dropdown">
+            <a href="#">Contacto ▼</a>
+
+            <ul class="submenu">
+                <li><a href="/ayuda/">Ayuda</a></li>
+                <li><a href="/contacto/">Contáctanos</a></li>
+                <li><a href="/chat/">Chat</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/registro/">Registrarse</a></li>
+
+        <li><a href="/login/">Iniciar Sesión</a></li>
+    </ul>
+
+     <form class="busqueda" action="{% url 'buscar' %}" method="GET">
+         <input type="text" name="q" placeholder="Buscar productos...">
+         <button type="submit">
+            <img src="{% static 'img/lupa.png' %}" alt="Buscar">
+        </button>
+    </form>
+</nav>
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+<footer>
+    <p>© 2026 Sitio Web - Regina de la Rosa Casas</p>
+</footer>
+
+</body>
+</html>

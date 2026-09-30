@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="titulo-contacto">Contacto</h2>
+
+<form method="POST" class="formulario-contacto">
+    {% csrf_token %}
+
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+
+    <label>Correo:</label>
+    <input type="email" name="correo" required>
+
+    <label>Mensaje:</label>
+    <textarea name="mensaje" rows="5" required></textarea>
+
+    <button type="submit">Enviar mensaje</button>
+
+    {% if mensaje_exito %}
+        <p class="exito">{{ mensaje_exito }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</form>
+
+{% endblock %}

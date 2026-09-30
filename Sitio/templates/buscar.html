@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Resultados de búsqueda</h2>
+
+{% if productos %}
+
+<div class="productos">
+
+    {% for producto in productos %}
+
+    <div class="card">
+        <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}">
+
+        <h3>{{ producto.nombre }}</h3>
+
+        <p>{{ producto.descripcion }}</p>
+
+        <div class="precio">
+            ${{ producto.precio }}
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<p>No se encontraron productos.</p>
+
+{% endif %}
+
+{% endblock %}
