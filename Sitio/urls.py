@@ -10,6 +10,6 @@ urlpatterns = [
     path('recuperar/', views.recuperar, name='recuperar'),
     path('mapa-sitio/', views.mapa_sitio, name='mapa_sitio'),
     path('buscar/', views.buscar, name='buscar'),
-    path('maquillaje/', views.buscar, name='maquillaje'),
+    path('maquillaje/', views.maquillaje, name='maquillaje'),
     path('404/', views.buscar, name='404'),
 ]

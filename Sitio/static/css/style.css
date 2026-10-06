@@ -160,11 +160,12 @@ main{
 }
 
 .card{
-    background:white;
+    background:black;
     text-align:center;
     transition:0.3s;
+    height: 200px;
 }
-
+s
 .card:hover{
     transform:translateY(-5px);
 }

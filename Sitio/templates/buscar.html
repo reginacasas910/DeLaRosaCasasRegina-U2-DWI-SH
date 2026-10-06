@@ -3,33 +3,78 @@
 
 {% block content %}
 
-<h2>Resultados de búsqueda</h2>
+{% if termino %}
 
-{% if productos %}
+    <h2>Resultados de búsqueda</h2>
 
-<div class="productos">
+    {% if productos %}
 
-    {% for producto in productos %}
+        <div class="productos">
 
-    <div class="card">
-        <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}">
+            {% for producto in productos %}
 
-        <h3>{{ producto.nombre }}</h3>
+            <div class="card">
+                <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}">
 
-        <p>{{ producto.descripcion }}</p>
+                <h3>{{ producto.nombre }}</h3>
 
-        <div class="precio">
-            ${{ producto.precio }}
+                <p>{{ producto.descripcion }}</p>
+
+                <div class="precio">
+                    ${{ producto.precio }}
+                </div>
+            </div>
+
+            {% endfor %}
+
         </div>
-    </div>
 
-    {% endfor %}
+    {% else %}
 
-</div>
+        <p>No se encontraron productos.</p>
+
+    {% endif %}
 
 {% else %}
 
-<p>No se encontraron productos.</p>
+    <div class="productos">
+
+        {% for producto in productos %}
+
+        <div class="card">
+            <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}">
+
+            <h3>{{ producto.nombre }}</h3>
+
+            <p>{{ producto.descripcion }}</p>
+
+            <div class="precio">
+                ${{ producto.precio }}
+            </div>
+
+            <button type="button"
+                style="
+                    width: 90%;
+                    margin: 15px auto 0;
+                    display: block;
+                    padding: 11px 20px;
+                    background: #2f2a2a;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-family: 'Times New Roman', serif;
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">
+                + Añadir al carrito
+            </button>
+        </div>
+
+        {% endfor %}
+
+    </div>
 
 {% endif %}
 

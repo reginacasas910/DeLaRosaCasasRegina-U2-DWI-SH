@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Producto, Usuario, Contacto
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -10,7 +11,7 @@ def inicio(request):
         'productos': productos
     })
 
-def inicio(request):
+def maquillaje(request):
     productos = Producto.objects.all()
 
     return render(request, 'maquillaje.html', {
@@ -20,15 +21,17 @@ def inicio(request):
 def buscar(request):
     termino = request.GET.get('q', '')
 
-    productos = Producto.objects.filter(
-        nombre__icontains=termino
-    )
+    if termino:
+        productos = Producto.objects.filter(
+            nombre__icontains=termino
+        )
+    else:
+        productos = Producto.objects.all()
 
     return render(request, 'buscar.html', {
         'productos': productos,
         'termino': termino
     })
-from django.shortcuts import render
 
 def contacto(request):
     mensaje_exito = None
@@ -89,7 +92,7 @@ def login_view(request):
                 request.session["usuario_id"] = usuario.id
                 request.session["usuario_nombre"] = usuario.nombre
 
-                return redirect("maquillaje") 
+                return redirect("buscar") 
             else:
                 error = "Contraseña incorrecta"
 
